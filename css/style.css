@@ -38,6 +38,10 @@ img {
   padding-inline: 2rem;
 }
 
+.product-image {
+  animation: slideDown 0.8s ease-out;
+}
+
 .product-image img {
   width: 100%;
   height: 100%;
@@ -49,6 +53,7 @@ img {
 .product-content {
   padding: 3rem 2rem 3rem 3rem;
   background-color: var(--white);
+  animation: slideUp 0.8s ease-out;
 }
 
 .product-content h2 {
@@ -101,15 +106,12 @@ img {
 
 .btn::before {
   content: '';
-  z-index: 0;
   width: 1.5rem;
   height: 1.6rem;
   background: url('../images/icon-cart.svg');
 }
 
 .btn {
-  position: relative;
-  z-index: 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -121,21 +123,11 @@ img {
   background-color: var(--dark-cyan);
   text-decoration: none;
   border-radius: 0.6rem;
+  transition: 0.3s ease-out;
 }
 
-.btn::after {
-  content: '';
-  position: absolute;
-  z-index: -1;
-  width: 0;
-  height: 100%;
-  border-radius: inherit;
+.btn:hover {
   background-color: var(--dark-cyan-hover);
-  transition: width 0.3s ease-out;
-}
-
-.btn:hover::after {
-  width: 100%;
 }
 
 @media only screen and (max-width: 460px) {
@@ -153,5 +145,29 @@ img {
   .product-content {
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
+  }
+}
+
+@keyframes slideDown {
+  from {
+    transform: translateY(-25vh);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(25vh);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate(0);
+    opacity: 1;
   }
 }
